@@ -54,7 +54,7 @@ export function BecomeTheRichestPage(): JSX.Element {
 
         if(!connection || !account ){
             console.log("redirect")
-            navigate('/')
+           navigate('/CONCORDIUM_TASK_3/')
         }
 
         if (connection && account && !isAwaitingApproval) {

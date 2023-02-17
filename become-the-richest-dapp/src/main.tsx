@@ -13,6 +13,7 @@ import {
 import ErrorPage from './pages/errorPage';
 import loadable from '@loadable/component';
 
+export const base = '/CONCORDIUM_TASK_3/'
 // component lazy loading
 
 const Account = loadable(() => import('./pages/AccountInfoPage'),
@@ -40,7 +41,7 @@ const ContractData = loadable(() => import('./pages/ContractDataPage'),
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
-      path="/"
+      path={base}
       element={<Root />}
       errorElement={<ErrorPage />}
     >
@@ -50,7 +51,7 @@ const router = createBrowserRouter(
           element={<IndexPage />}
         />
         <Route
-          path="account-info/"
+          path={"account-info/"}
           element={<Account />}
         />
         <Route

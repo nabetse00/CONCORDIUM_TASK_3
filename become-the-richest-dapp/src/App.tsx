@@ -28,6 +28,7 @@ import './index.css';
 import { errorString } from './utils/errors';
 //import logo from './assets/concordium-logo-dark.svg'
 import logo from './assets/concordium_logo_white.webp'
+import {base} from './main'
 
 const { Header, Sider, Content } = Layout;
 
@@ -131,7 +132,7 @@ export function App(props: WalletConnectionProps) {
     <>
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <Link to="/">
+          <Link to={base}>
           <img src={logo} className="logo" alt="Concordium"/>
           </Link>
           
@@ -146,28 +147,28 @@ export function App(props: WalletConnectionProps) {
                 key: '1',
                 icon: <UserOutlined />,
                 label: (
-                  <Link to="/account-info">
+                  <Link to={base+"account-info"}>
                     Account Info
                   </Link>),
               },
               {
                 key: '2',
                 icon: <ContactsOutlined />,
-                label: (<Link to="/contract-info">
+                label: (<Link to={base+"contract-info"}>
                   Contract Info
                 </Link>),
               },
               {
                 key: '3',
                 icon: <InfoCircleOutlined />,
-                label: (<Link to="/contract" >
+                label: (<Link to={base+"contract"} >
                   Contract Data
                 </Link>),
               },
               {
                 key: '4',
                 icon: <DollarCircleOutlined />,
-                label: (<Link to="/become-the-richest" >
+                label: (<Link to={base+"become-the-richest"}>
                   Become the richest
                 </Link>),
               },

@@ -30,7 +30,7 @@ export function ContractDataPage(): JSX.Element {
     useEffect(() => {
 
         if(!connection || !account ){
-            navigate('/')
+           navigate('/CONCORDIUM_TASK_3/')
         }
         
         if (connection) {
