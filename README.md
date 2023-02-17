@@ -21,7 +21,7 @@ for more details.
 `4Fo1erxUgLt7wDvaoUgxxBbV3rquCWZmnzGnDA2DUzv6FFqAKk`
 
 # Acceptance Criteria
-- [] A brief README file with instructions on how to run the dApp + a clear description of what the dApp does and how to use it (including valid input)
+- [x] A brief README file with instructions on how to run the dApp + a clear description of what the dApp does and how to use it (including valid input)
 - [x] your Concordium mainnet address for payout
 - [] Add gif/video showing the dApp in use
 
@@ -37,9 +37,9 @@ This dApp will interact with `become_the_richest` contract developed for
 Contract details: 
 ```
 become_the_richest Contract:
-{"index":2975,"subindex":0}
+{"index":XXXX,"subindex":0}
 Contract address:
-1cbd409fd57d8e0283c28be708f6b72e0b2bffdeb99a620e14d52d0deb0bd42f
+XXXX
 ```
 
 See [github repo for task 2](https://github.com/nabetse00/CONCORDIUM_TASK_2)
@@ -54,10 +54,61 @@ Dapp will allow a user to:
 
 # set up 
 
+1. First install [concordium broswer extention](https://chrome.google.com/webstore/detail/concordium-wallet/mnnkpffndmickbiakofclnpoiajlegmg) or sign up [WalletConnect](https://walletconnect.com/).
+
+2. Follow this [guide](https://developer.concordium.software/en/mainnet/net/guides/create-account.html#) to set up an account and add some CCD from 
+testnet dispenser.
+
+3. Execute 
+
 ```console
 cd become-the-richest-dapp
 npm i 
 npm run dev 
 ```
+
+to test dapp localy.
+
+Server should be running at [http://localhost:5173/](http://localhost:5173/)
+
+Contract code is in [become-the-richest-contract](./become-the-richest-contract/) folder.
+
+# Interact with the application
+
+First click `connect browser wallet` 
+
+![connect browser wallet](./media/screen1.png)
+
+and accept the connection
+
+![accept the connection](./media/screen2.png)
+
+Dapp shows the connected account
+
+![dapp connected wallet connected account](./media/screen3.png)
+
+Get some information and interact with the contract via the navbar menu:
+
+![navbar menu](./media/screen4.png)
+
+Click `become the richest` and send some CCD to become the richest !!!
+
+![become the richest!](./media/screen5.png)
+
+Pay some CCD:
+
+
+![confirm](./media/screen6.png)
+
+![sign](./media/screen7.png)
+
+Wait for transaction confirmation then you should be the richest!
+![wait](./media/screen8.png)
+
+you can also access this dapp here [dapp demo github page](https://demoapp.com)
+
+# video showing the dApp in use
+
+
 
 

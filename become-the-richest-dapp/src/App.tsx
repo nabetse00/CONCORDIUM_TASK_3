@@ -184,7 +184,7 @@ export function App(props: WalletConnectionProps) {
                   onClick: () => setCollapsed(!collapsed),
                 })}
               </Col>
-              <Col flex="auto" />
+              <Col span={4} flex="auto" />
               <Col span={12} ref={refConnectButtons}>
                 <Space size="small">
                   <ConnectedAccount connection={connection} account={account} network={network} />
