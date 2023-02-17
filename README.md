@@ -59,7 +59,14 @@ Dapp will allow a user to:
 2. Follow this [guide](https://developer.concordium.software/en/mainnet/net/guides/create-account.html#) to set up an account and add some CCD from 
 testnet dispenser.
 
-3. Execute 
+3. [OPTIONAL] for WalletConnet suport set project id variable:
+
+Copy ./become-the-richest-dapp/.env.template to ./become-the-richest-dapp/.env and update `VITE_WALLET_CONNECT_PROJECT_ID`
+variable to  
+```bash
+VITE_WALLET_CONNECT_PROJECT_ID={your_valid_project_id}
+```
+4. Execute 
 
 ```console
 cd become-the-richest-dapp
@@ -70,7 +77,7 @@ npm run dev
 to test dapp localy.
 
 Server should be running at [http://localhost:5173/](http://localhost:5173/)
-
+# contract code 
 Contract code is in [become-the-richest-contract](./become-the-richest-contract/) folder.
 
 # Interact with the application
