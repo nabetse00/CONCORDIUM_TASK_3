@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -20,7 +20,9 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v1.6.0
+        with:
+          working-directory: ./become-the-richest-dapp
 
       - name: Build project
         working-directory: ./become-the-richest-dapp
