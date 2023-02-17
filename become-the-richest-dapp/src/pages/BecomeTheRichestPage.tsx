@@ -5,14 +5,14 @@ import {
 } from '@concordium/web-sdk';
 import { Alert, Button, Card, Form, Input, InputNumber, Select, Space, Spin, Typography } from "antd";
 import { Suspense, useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { ModalConfirm } from "../components/ModalConfirm";
 import { NoAccount } from "../components/NoAccount";
 import { TxnStatusComponent } from "../components/txnStatusComp";
 import { CONTRACT_DATA } from "../config/contract";
 import { StateView } from "../contract/contractTypes";
 import { getContractInfo, invokeStateView, updateBecomeTheRichestMethod } from "../contract/invokeContractFn";
-import { useContractSchemaRpc } from "./ContractSchemaRPC";
+
 
 interface Props {
     connection?: WalletConnection,
@@ -36,6 +36,7 @@ export function BecomeTheRichestPage(): JSX.Element {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAwaitingApproval, setIsAwaitingApproval] = useState(false);
     const [submittedTxHash, setSubmittedTxHash] = useState<string>();
+    const navigate = useNavigate();
 
 
 
@@ -49,9 +50,13 @@ export function BecomeTheRichestPage(): JSX.Element {
         method: "become_the_richest.view",
     }
 
-    const resultSchema = useContractSchemaRpc(connection, contract)
-
     useEffect(() => {
+
+        if(!connection || !account ){
+            console.log("redirect")
+            navigate('/')
+        }
+
         if (connection && account && !isAwaitingApproval) {
 
             getContractInfo(connection).then(

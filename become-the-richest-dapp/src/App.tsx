@@ -6,7 +6,7 @@ import {
   withJsonRpcClient,
   WithWalletConnector
 } from '@concordium/react-components';
-import { createContext, createElement, useContext, useEffect, useState } from 'react';
+import { createContext, createElement, useContext, useEffect, useRef, useState } from 'react';
 import './App.css';
 import { NetworkSelector } from './components/NetworkSelector';
 import { MAINNET, TESTNET } from './config/networks';
@@ -18,14 +18,16 @@ import {
   DollarCircleOutlined,
   InfoCircleOutlined
 } from '@ant-design/icons';
-import { Alert, Button, Col, Layout, Menu, Row, Space, Spin, theme } from 'antd';
+import { Alert, Button, Col, Layout, Menu, MenuRef, Row, Space, Spin, theme } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ConnectedAccount } from './components/ConnectedAccount';
 import { WalleSelectorButton } from './components/WalletSelectorButton';
 import { BROWSER_WALLET, WALLET_CONNECT } from './config/wallet';
 import './index.css';
 import { errorString } from './utils/errors';
+//import logo from './assets/concordium-logo-dark.svg'
+import logo from './assets/concordium-logo-white.webp'
 
 const { Header, Sider, Content } = Layout;
 
@@ -51,6 +53,9 @@ export function App(props: WalletConnectionProps) {
   const [rpcGenesisHash, setRpcGenesisHash] = useState<string>();
   const [rpcError, setRpcError] = useState('');
   const [collapsed, setCollapsed] = useState(false);
+  const refConnectButtons = useRef<HTMLDivElement>(null);
+  const refNavBar =  useRef<MenuRef>(null);
+  const location = useLocation();
 
   const { isSelected, isConnected, isDisabled, select } = useWalletConnectorSelector(
     BROWSER_WALLET,
@@ -58,7 +63,7 @@ export function App(props: WalletConnectionProps) {
     props
   );
 
-  const [outletProps, setOutletProps] = useState({ connection, account, network })
+  const [outletProps, setOutletProps] = useState({ connection, account, network, refNavBar, refConnectButtons })
 
   const footerText = "Nabetse ©2023 Created by Nabetse"
 
@@ -91,23 +96,51 @@ export function App(props: WalletConnectionProps) {
     }
 
     if (connection && account) {
-      setOutletProps({ connection, account, network })
+      setOutletProps({ connection, account, network, refNavBar, refConnectButtons })
     }
 
     if (connection && !account) {
-      setOutletProps({ connection, account, network })
+      setOutletProps({ connection, account, network, refNavBar, refConnectButtons })
     }
   }, [connection, genesisHash, network, account, activeConnector]);
+
+  
+  function menuSelectedKeyFromLocation(): string[] {
+    const path = location.pathname;
+    switch (path) {
+      case "/":
+        return ['1'];
+
+      case "/contract-info":
+        return ['2'];
+
+      case "/contract":
+        return ['3'];
+
+      case "/become-the-richest":
+        return ['4'];
+
+      default:
+        return ['1'];
+    }
+
+  }
+  
 
   return (
     <>
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="logo" />
+          <Link to="/">
+          <img src={logo} className="logo" alt="Concordium"/>
+          </Link>
+          
           <Menu
+            ref={refNavBar}
             theme="dark"
             mode="inline"
             defaultSelectedKeys={['1']}
+            selectedKeys={menuSelectedKeyFromLocation()}
             items={[
               {
                 key: '1',
@@ -152,7 +185,7 @@ export function App(props: WalletConnectionProps) {
                 })}
               </Col>
               <Col flex="auto" />
-              <Col span={12}>
+              <Col span={12} ref={refConnectButtons}>
                 <Space size="small">
                   <ConnectedAccount connection={connection} account={account} network={network} />
                   <WalleSelectorButton
@@ -179,7 +212,6 @@ export function App(props: WalletConnectionProps) {
                   </>
                   <NetworkSelector selected={networkCtx.network} options={[TESTNET, MAINNET]} select={networkCtx.setNetwork} />
                 </Space>
-
               </Col>
             </Row>
 

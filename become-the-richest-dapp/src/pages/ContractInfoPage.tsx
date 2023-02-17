@@ -1,7 +1,7 @@
 import { Network, WalletConnection, withJsonRpcClient } from "@concordium/react-components";
 import { Badge, Descriptions, Spin } from "antd";
 import { Suspense, useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { ContractAddress, InstanceInfo } from '@concordium/web-sdk';
 import { CONTRACT_DATA } from "../config/contract"
 import Balance from "../components/Balance";
@@ -20,6 +20,7 @@ export function ContractInfoPage() {
 
     const [info, setInfo] = useState<InstanceInfo>()
     const [infoError, setInfoError] = useState<string>('')
+    const navigate = useNavigate()
 
     const contractAddress: ContractAddress = {
         index: CONTRACT_DATA.index,
@@ -27,6 +28,11 @@ export function ContractInfoPage() {
     }
 
     useEffect(() => {
+
+        if(!connection || !account ){
+            navigate('/')
+        }
+
         if (connection) {
 
             withJsonRpcClient(connection, (rpc) => rpc.getInstanceInfo(contractAddress))

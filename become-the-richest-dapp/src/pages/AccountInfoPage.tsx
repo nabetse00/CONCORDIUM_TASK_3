@@ -1,7 +1,7 @@
 import { Network, WalletConnection, withJsonRpcClient } from "@concordium/react-components";
 import { Alert, Badge, Descriptions, Spin } from "antd";
 import { Suspense, useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { AccountInfo } from '@concordium/web-sdk';
 import Balance from "../components/Balance";
 import Link from "antd/es/typography/Link";
@@ -17,10 +17,16 @@ export function AccountInfoPage() {
     const { connection, account, network }: Props = useOutletContext();;
     const [info, setInfo] = useState<AccountInfo>();
     const [infoError, setInfoError] = useState('');
+    const navigate = useNavigate()
 
     const scanLink = network?.ccdScanBaseUrl + '/?dcount=1&dentity=account&daddress=' + info?.accountAddress
 
     useEffect(() => {
+
+        if(!connection || !account ){
+            navigate('/')
+        }
+
         if (connection) {
             setInfo(undefined);
         }

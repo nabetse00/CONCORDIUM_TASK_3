@@ -2,16 +2,13 @@ import { Network, WalletConnection, withJsonRpcClient } from "@concordium/react-
 import { ContractAddress, ContractContext, deserializeReceiveReturnValue, InstanceInfo, InvokeContractResult, InvokeContractSuccessResult, toBuffer } from '@concordium/web-sdk';
 import { Spin } from "antd";
 import { Suspense, useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { StateViewCompoment } from "../components/genericView";
 import { NoAccount } from "../components/NoAccount";
 import { StateView } from "../contract/contractTypes";
 
 
 import { getContractInfo, invokeStateView } from "../contract/invokeContractFn";
-
-import { useContractSchemaRpc } from "./ContractSchemaRPC";
-
 
 interface Props {
     connection?: WalletConnection,
@@ -27,10 +24,15 @@ export function ContractDataPage(): JSX.Element {
     //const [schemaRpc, setSchemaRpc] = useState<SchemaRpcResult>()
     const [contract, setContract] = useState<InstanceInfo>()
     const [contractError, setContractError] = useState<string>('')
-
-    const resultSchema = useContractSchemaRpc(connection, contract)
+    const navigate = useNavigate();
+    
 
     useEffect(() => {
+
+        if(!connection || !account ){
+            navigate('/')
+        }
+        
         if (connection) {
 
             getContractInfo(connection).then(
@@ -49,7 +51,7 @@ export function ContractDataPage(): JSX.Element {
                     setInvkError('')
                 }
             ).catch(
-                (err) =>{
+                (err) => {
                     console.log(err)
                     setStateView(undefined)
                     setInvkError(err)
@@ -65,7 +67,7 @@ export function ContractDataPage(): JSX.Element {
                 {stateView ?
                     <>
                         {stateView ?
-                            contract && StateViewCompoment("State",stateView, Number(contract.amount.microCcdAmount))
+                            contract && StateViewCompoment("State", stateView, Number(contract.amount.microCcdAmount))
                             :
                             "state undefined"
                         }

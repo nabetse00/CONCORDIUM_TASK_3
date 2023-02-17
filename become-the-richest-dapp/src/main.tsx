@@ -31,6 +31,10 @@ const ContractData = loadable(() => import('./pages/ContractDataPage'),
   {
     resolveComponent: (components) => components.BecomeTheRichestPage
   });
+  const IndexPage = loadable(() => import('./pages/IndexPage'),
+  {
+    resolveComponent: (components) => components.IndexPage
+  });
 
 // Root route
 const router = createBrowserRouter(
@@ -41,6 +45,10 @@ const router = createBrowserRouter(
       errorElement={<ErrorPage />}
     >
       <Route errorElement={<ErrorPage />}>
+      <Route
+          index
+          element={<IndexPage />}
+        />
         <Route
           path="account-info/"
           element={<Account />}
