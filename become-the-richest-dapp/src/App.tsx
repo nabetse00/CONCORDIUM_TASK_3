@@ -27,7 +27,7 @@ import { BROWSER_WALLET, WALLET_CONNECT } from './config/wallet';
 import './index.css';
 import { errorString } from './utils/errors';
 //import logo from './assets/concordium-logo-dark.svg'
-import logo from './assets/concordium-logo-white.webp'
+import logo from './assets/concordium_logo_white.webp'
 
 const { Header, Sider, Content } = Layout;
 
