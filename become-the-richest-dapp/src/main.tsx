@@ -11,19 +11,25 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ErrorPage from './pages/errorPage';
-//import { AccountPage } from './pages/AccountPage';
-//import { ContractPage } from './pages/btrPage';
 import loadable from '@loadable/component';
 
 // component lazy loading
 
-const Account = loadable(() => import('./pages/AccountPage'),
+const Account = loadable(() => import('./pages/AccountInfoPage'),
   {
-    resolveComponent: (components) => components.AccountPage
+    resolveComponent: (components) => components.AccountInfoPage
   });
-const Contract = loadable(() => import('./pages/btrPage'),
+const ContractInfo = loadable(() => import('./pages/ContractInfoPage'),
   {
-    resolveComponent: (components) => components.ContractPage
+    resolveComponent: (components) => components.ContractInfoPage
+  });
+const ContractData = loadable(() => import('./pages/ContractDataPage'),
+  {
+    resolveComponent: (components) => components.ContractDataPage
+  });
+  const BecomeTheRichest = loadable(() => import('./pages/BecomeTheRichestPage'),
+  {
+    resolveComponent: (components) => components.BecomeTheRichestPage
   });
 
 // Root route
@@ -36,14 +42,24 @@ const router = createBrowserRouter(
     >
       <Route errorElement={<ErrorPage />}>
         <Route
-          path="account/"
+          path="account-info/"
           element={<Account />}
         />
         <Route
+          path="contract-info/"
+          element={<ContractInfo />}
+        />
+        <Route
           path="contract/"
-          element={<Contract />}
+          element={<ContractData />}
+        />
+
+        <Route
+          path="become-the-richest/"
+          element={<BecomeTheRichest/>}
         />
       </Route>
+
     </Route>
   )
 );

@@ -33,17 +33,17 @@ export default function Account({ account, currency }: { account: AccountInfo; c
     <div style={{ display: "flex" }}>
       <span>
         {account.accountAddress && (
-          
-          <Card
-          hoverable
-          title="Account information"
-        >
-          <Space direction="vertical">
 
-          <Meta title="Account Address" description={<Address address={account.accountAddress} fontSize={24} />} />  
-          <Meta title="Account Balance" description={<Balance balance={account.accountAmount} price={price} currency={currency} />} />
-          </Space>
-        </Card>
+          <Card
+            hoverable
+            title="Account information"
+          >
+            <Space direction="vertical">
+
+              <Meta title="Account Address" description={<Address address={account.accountAddress} fontSize={24} />} />
+              <Meta title="Account Balance" description={<Balance balance={account.accountAmount} price={price} currency={currency} />} />
+            </Space>
+          </Card>
         )}
       </span>
     </div>

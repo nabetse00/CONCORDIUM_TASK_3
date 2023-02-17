@@ -5,6 +5,7 @@ import { useOutletContext } from "react-router-dom";
 import { AccountInfo } from '@concordium/web-sdk';
 import Balance from "../components/Balance";
 import Link from "antd/es/typography/Link";
+import { NoAccount } from "../components/NoAccount";
 
 interface Props {
     connection?: WalletConnection,
@@ -12,7 +13,7 @@ interface Props {
     network?: Network
 }
 
-export function AccountPage() {
+export function AccountInfoPage() {
     const { connection, account, network }: Props = useOutletContext();;
     const [info, setInfo] = useState<AccountInfo>();
     const [infoError, setInfoError] = useState('');
@@ -54,15 +55,9 @@ export function AccountPage() {
                     <Descriptions.Item label="Encryption key">{info.accountEncryptionKey}</Descriptions.Item>
                 </Descriptions>
                 :
-                <NoAccount network={network?.name} />
+                account ? <Spin /> : <NoAccount network={network?.name}/>
             }
         </Suspense>
 
-    );
-}
-
-function NoAccount(props: { network: string | undefined; }): JSX.Element {
-    return (
-        <Alert type="error" message="No account connected" description={"Please connect to your wallet on " + props.network} />
     );
 }

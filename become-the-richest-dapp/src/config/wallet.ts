@@ -9,8 +9,8 @@ const WALLET_CONNECT_PROJECT_ID = import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID
 const WALLET_CONNECT_OPTS: SignClientTypes.Options = {
     projectId: WALLET_CONNECT_PROJECT_ID,
     metadata: {
-        name: 'Contract Update',
-        description: 'Example dApp for the performing an update on a contract.',
+        name: 'become_the_richest Contract Update',
+        description: 'Become the Richest dApp demo',
         url: '#',
         icons: ['https://walletconnect.com/walletconnect-logo.png'],
     },
