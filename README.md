@@ -46,7 +46,7 @@ See [github repo for task 2](https://github.com/nabetse00/CONCORDIUM_TASK_2)
 for details about this contract.
 
 Dapp will allow a user to:
-- Check who is the richest address 
+- Checks who is the richest address 
 - See the message the richest attached
 - The amount the richest address sent
 - The minimal increase needed to become the richest
