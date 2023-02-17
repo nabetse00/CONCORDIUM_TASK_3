@@ -23,7 +23,7 @@ for more details.
 # Acceptance Criteria
 - [x] A brief README file with instructions on how to run the dApp + a clear description of what the dApp does and how to use it (including valid input)
 - [x] your Concordium mainnet address for payout
-- [] Add gif/video showing the dApp in use
+- [x] Add gif/video showing the dApp in use
 
 Link to the [Gitcoin issue 29743](https://gitcoin.co/issue/29743)
 
@@ -118,14 +118,11 @@ Pay some CCD:
 ![sign](./media/screen7.png)
 
 Wait for transaction confirmation then you should be the richest!
+
 ![wait](./media/screen8.png)
-
-
 
 # video showing the dApp in use
 
-
-
-
+[video demo](https://user-images.githubusercontent.com/4185026/219767160-a593bdaf-50bd-41f1-8ea2-be28258f2c77.mp4)
 
 
