@@ -1,32 +1,8 @@
 import { Avatar, Button, Skeleton, Space, Typography } from "antd";
 import Link from "antd/es/typography/Link";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Blockies from "react-blockies";
 import { NetworkContext } from "../App";
-
-// changed value={address} to address={address}
-
-const { Text } = Typography;
-
-
-/** 
-  ~ What it does? ~
-  Displays an address with a blockie image and option to copy address
-  ~ How can I use? ~
-  <Address
-    address={address}
-    ensProvider={mainnetProvider}
-    blockExplorer={blockExplorer}
-    fontSize={fontSize}
-  />
-  ~ Features ~
-  - Provide ensProvider={mainnetProvider} and your address will be replaced by ENS name
-              (ex. "0xa870" => "user.eth")
-  - Provide blockExplorer={blockExplorer}, click on address and get the link
-              (ex. by default "https://etherscan.io/" or for xdai "https://blockscout.com/poa/xdai/")
-  - Provide fontSize={fontSize} to change the size of address text
-**/
-
 
 
 export default function Address(props: { address?: string; minimized?: boolean; fontSize?: number; onChange?: any; }): JSX.Element {

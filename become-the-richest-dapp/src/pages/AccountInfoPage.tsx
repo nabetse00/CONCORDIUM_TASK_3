@@ -1,10 +1,10 @@
 import { Network, WalletConnection, withJsonRpcClient } from "@concordium/react-components";
-import { Alert, Badge, Descriptions, Spin } from "antd";
+import { AccountInfo } from '@concordium/web-sdk';
+import { Badge, Descriptions, Spin } from "antd";
+import Link from "antd/es/typography/Link";
 import { Suspense, useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { AccountInfo } from '@concordium/web-sdk';
 import Balance from "../components/Balance";
-import Link from "antd/es/typography/Link";
 import { NoAccount } from "../components/NoAccount";
 
 interface Props {

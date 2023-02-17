@@ -2,7 +2,6 @@
 import type { MenuProps } from 'antd';
 import { Dropdown, Space, message } from 'antd';
 import { Network } from '@concordium/react-components';
-import { useCallback, useState } from 'react';
 import { DesktopOutlined, DownOutlined, ClusterOutlined } from '@ant-design/icons';
 
 interface Props {
@@ -12,16 +11,9 @@ interface Props {
 }
 
 export function NetworkSelector({ selected, options, select }: Props) {
-    //const onSelect = useCallback((key: any) => select(options[key as number]), [options, select]);
-    const [loadings, setLoadings] = useState<boolean[]>([]);
 
     let items: MenuProps['items'] = [];
     let i = 1
-
-    const change = (n: Network) => {
-        console.log("changed to " + n.name)
-
-    }
 
     const isDanger = (n: Network) => {
         if (n.name == "mainnet") {
@@ -49,22 +41,6 @@ export function NetworkSelector({ selected, options, select }: Props) {
         console.log('click', e);
     };
 
-
-    const enterLoading = (index: number) => {
-        setLoadings((state) => {
-            const newLoadings = [...state];
-            newLoadings[index] = true;
-            return newLoadings;
-        });
-
-        setTimeout(() => {
-            setLoadings((state) => {
-                const newLoadings = [...state];
-                newLoadings[index] = false;
-                return newLoadings;
-            });
-        }, 6000);
-    };
     return (
         <Space direction="vertical">
             <Dropdown.Button size='large' menu={{ items }} onClick={handleMenuClick} icon={<DownOutlined />} arrow danger={isDanger(selected)}>

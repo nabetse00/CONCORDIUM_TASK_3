@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Balance(props: { balance: bigint; price?: number; currency: "EUR" | "USD", currencyMultiplier?: number; size?: number; }) {
     const [fiatMode, setFiatMode] = useState(true);
