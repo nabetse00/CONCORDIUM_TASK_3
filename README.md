@@ -52,7 +52,15 @@ Dapp will allow a user to:
 - The minimal increase needed to become the richest
 - Send a update to the contract to become the richest
 
-# set up 
+## Demo Dapp
+
+You can access this dapp here [dapp demo github page](https://nabetse00.github.io/CONCORDIUM_TASK_3/)
+
+You will need [concordium broswer extention](https://chrome.google.com/webstore/detail/concordium-wallet/mnnkpffndmickbiakofclnpoiajlegmg) or sign up [WalletConnect](https://walletconnect.com/).
+
+Also you can deploy localy
+
+## Local set up 
 
 1. First install [concordium broswer extention](https://chrome.google.com/webstore/detail/concordium-wallet/mnnkpffndmickbiakofclnpoiajlegmg) or sign up [WalletConnect](https://walletconnect.com/).
 
@@ -76,7 +84,7 @@ npm run dev
 
 to test dapp localy.
 
-Server should be running at [http://localhost:5173/](http://localhost:5173/)
+Server should be running at [http://localhost:5173/CONCORDIUM_TASK_3/](http://localhost:5173/CONCORDIUM_TASK_3/)
 # contract code 
 Contract code is in [become-the-richest-contract](./become-the-richest-contract/) folder.
 
@@ -112,9 +120,11 @@ Pay some CCD:
 Wait for transaction confirmation then you should be the richest!
 ![wait](./media/screen8.png)
 
-you can also access this dapp here [dapp demo github page](https://demoapp.com)
+
 
 # video showing the dApp in use
+
+
 
 
 

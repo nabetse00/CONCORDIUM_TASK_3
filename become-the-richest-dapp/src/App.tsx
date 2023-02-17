@@ -28,7 +28,7 @@ import './index.css';
 import { errorString } from './utils/errors';
 //import logo from './assets/concordium-logo-dark.svg'
 import logo from './assets/concordium_logo_white.webp'
-import {base} from './main'
+import { base } from './main'
 
 const { Header, Sider, Content } = Layout;
 
@@ -55,7 +55,7 @@ export function App(props: WalletConnectionProps) {
   const [rpcError, setRpcError] = useState('');
   const [collapsed, setCollapsed] = useState(false);
   const refConnectButtons = useRef<HTMLDivElement>(null);
-  const refNavBar =  useRef<MenuRef>(null);
+  const refNavBar = useRef<MenuRef>(null);
   const location = useLocation();
 
   const { isSelected, isConnected, isDisabled, select } = useWalletConnectorSelector(
@@ -105,37 +105,40 @@ export function App(props: WalletConnectionProps) {
     }
   }, [connection, genesisHash, network, account, activeConnector]);
 
-  
+
   function menuSelectedKeyFromLocation(): string[] {
     const path = location.pathname;
     switch (path) {
-      case "/":
+      case base:
+        return ['0'];
+
+      case base + "account-info":
         return ['1'];
 
-      case "/contract-info":
+      case base + "contract-info":
         return ['2'];
 
-      case "/contract":
+      case base + "contract":
         return ['3'];
 
-      case "/become-the-richest":
+      case base + "become-the-richest":
         return ['4'];
 
       default:
-        return ['1'];
+        return ['0'];
     }
 
   }
-  
+
 
   return (
     <>
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <Link to={base}>
-          <img src={logo} className="logo" alt="Concordium"/>
+            <img src={logo} className="logo" alt="Concordium" />
           </Link>
-          
+
           <Menu
             ref={refNavBar}
             theme="dark"
@@ -147,28 +150,28 @@ export function App(props: WalletConnectionProps) {
                 key: '1',
                 icon: <UserOutlined />,
                 label: (
-                  <Link to={base+"account-info"}>
+                  <Link to={base + "account-info"}>
                     Account Info
                   </Link>),
               },
               {
                 key: '2',
                 icon: <ContactsOutlined />,
-                label: (<Link to={base+"contract-info"}>
+                label: (<Link to={base + "contract-info"}>
                   Contract Info
                 </Link>),
               },
               {
                 key: '3',
                 icon: <InfoCircleOutlined />,
-                label: (<Link to={base+"contract"} >
+                label: (<Link to={base + "contract"} >
                   Contract Data
                 </Link>),
               },
               {
                 key: '4',
                 icon: <DollarCircleOutlined />,
-                label: (<Link to={base+"become-the-richest"}>
+                label: (<Link to={base + "become-the-richest"}>
                   Become the richest
                 </Link>),
               },
