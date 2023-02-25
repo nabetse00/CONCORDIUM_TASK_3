@@ -9,6 +9,7 @@ import { StateView } from "../contract/contractTypes";
 
 
 import { getContractInfo, invokeStateView } from "../contract/invokeContractFn";
+import { base } from "../main";
 
 interface Props {
     connection?: WalletConnection,
@@ -30,7 +31,7 @@ export function ContractDataPage(): JSX.Element {
     useEffect(() => {
 
         if(!connection || !account ){
-           navigate('/CONCORDIUM_TASK_3/')
+           navigate(base)
         }
         
         if (connection) {
